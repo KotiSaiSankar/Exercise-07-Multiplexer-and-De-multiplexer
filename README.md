@@ -47,42 +47,101 @@ If the control input changes to AB = 10, then all the gates are restricted excep
  
  
 ### Procedure
-/* write all the steps invloved */
+
+Step1:
+Start the module.
+
+Step2:
+Declare the inputs and outputs along with the select lines according to the multiplexer and demultiplexer.
+
+Step3:
+Use wire to assign intermediate outputs.
+
+Step4:
+Use and,or and not gates to get the desired output.
+
+Step5:
+End the module.
+
+Step6:
+Generate RTL realization and timing diagrams.
 
 
 
 ### PROGRAM 
 /*
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
+
+Developed by: Koti Sai Sankar
+RegisterNumber:  212222240111
 */
 
+MUX:
 
+module MUX(I0,I1,I2,I3,S0,S1,Y);
+input I0,I1,I2,I3,S0,S1;
+output Y;
+wire S0C,S1C;
+not(S0C,S0);
+not(S1C,S1);
+wire P,Q,R,S;
+and(P,S0C,S1C,I0);
+and(Q,S0C,S1,I1);
+and(R,S0,S1C,I2);
+and(S,S0,S1,I3);
+or(Y,P,Q,R,S);
+endmodule
 
+DEMUX
+
+module demux(Y0,Y1,Y2,Y3,S0,S1,I);
+input S0,S1,I;
+output Y0,Y1,Y2,Y3;
+wire S0C,S1C;
+not(S0C,S0);
+not(S1C,S1);
+and(Y0,I,S0C,S1C);
+and(Y1,I,S0C,S1);
+and(Y2,I,S0,S1C);
+and(Y3,I,S0,S1);
+endmodule
 
 
 
 ### RTL LOGIC  
 
+MULTIPLEXER
 
+![RTL](https://github.com/HariniEEE/Exercise-07-Multiplexer-and-De-multiplexer/assets/128949246/2f4dc419-05d9-4442-99a3-1d9c0949bb38)
 
+DEMULTIPLEXER
 
-
-
+![RTL de](https://github.com/HariniEEE/Exercise-07-Multiplexer-and-De-multiplexer/assets/128949246/b67500e6-1ab0-44b0-af7f-6b6f932663f4)
 
 
 ### TIMING DIGRAMS  
 
+MULTIPLEXER
 
+![timing mux](https://github.com/HariniEEE/Exercise-07-Multiplexer-and-De-multiplexer/assets/128949246/f37d4689-6651-42c5-8494-6876ce599aa6)
 
+DEMULTIPLEXER
+
+![timigdemux](https://github.com/HariniEEE/Exercise-07-Multiplexer-and-De-multiplexer/assets/128949246/a9e4c792-7d6f-4152-9e11-b692577c1ace)
 
 
 ### TRUTH TABLE 
 
+MULTIPLEXER
 
+![truth mux](https://github.com/HariniEEE/Exercise-07-Multiplexer-and-De-multiplexer/assets/128949246/adf2b0ce-4461-4280-9606-82060e853972)
 
+DEMULTIPLEXER
 
+![truth demux](https://github.com/HariniEEE/Exercise-07-Multiplexer-and-De-multiplexer/assets/128949246/5cf2eb5c-410e-4e05-86fd-6a56f223c178)
 
 
 ### RESULTS 
+
+  Thus the program to design a 4x1 multiplexer and 1x4 demultiplexer is done successful.  
+
